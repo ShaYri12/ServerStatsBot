@@ -45,21 +45,26 @@ const Status = () => {
     setSearchTerm(e.target.value);
   };
     
-      const formatUptime = (seconds) => {
-        const days = Math.floor(seconds / (24 * 3600));
-        const remainingSecondsAfterDays = seconds % (24 * 3600);
-        const hours = Math.floor(remainingSecondsAfterDays / 3600);
-        const remainingSecondsAfterHours = remainingSecondsAfterDays % 3600;
-        const minutes = Math.floor(remainingSecondsAfterHours / 60);
-        
-        const formattedUptime = [];
-      
-        if (days > 0) formattedUptime.push(`${days}d`);
-        if (hours > 0) formattedUptime.push(`${hours}h`);
-        if (minutes > 0 || (days === 0 && hours === 0)) formattedUptime.push(`${minutes}m`);
-      
-        return formattedUptime.join(', ');
-      };
+  const formatUptime = (totalMilliseconds) => {
+    const totalSeconds = Math.floor(totalMilliseconds / 1000);
+    const days = Math.floor(totalSeconds / (60 * 60 * 24));
+    const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
+    const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+
+    const formattedTime = [];
+
+    if (days > 0) {
+        formattedTime.push(`${days}d`);
+    }
+    if (hours > 0) {
+        formattedTime.push(`${hours}h`);
+    }
+    if (minutes > 0 || days === 0 && hours === 0) {
+        formattedTime.push(`${minutes}m`);
+    }
+
+    return formattedTime.join(' ');
+};
 
   if (!data) {
     return <div className='flex items-center justify-center min-h-screen font-bold text-white text-lg'>Loading...</div>;
@@ -120,9 +125,9 @@ const Status = () => {
                       </div>
                     ))}
                     <hr className='my-2'/>
-                    <div className="p-1">
-                    <p><span>Cluster Uptime:</span> {formatUptime(cluster.clusterUptime)}</p>
-                      <p><span>Guilds:</span> {cluster.guilds}</p>
+                    <div className="p-1 space-y-1">
+                        <p><span>Uptime:</span> {formatUptime(cluster.clusterUptime)}</p>
+                        <p><span>Guilds:</span> {cluster.guilds}</p>
                     </div>
                   </div>
                 )}
