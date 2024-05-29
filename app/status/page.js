@@ -7,7 +7,8 @@ const Status = () => {
     const [data, setData] = useState(null);
     const [nextUpdate, setNextUpdate] = useState(60); // Initial countdown until next update
     const [searchTerm, setSearchTerm] = useState("");
-    
+    const [searchResult, setSearchResult] = useState(null);
+
     useEffect(() => {
         window.scrollTo(0, -1);
     }, []);
@@ -44,6 +45,22 @@ const Status = () => {
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const searched = searchTerm;
+    const result = data.clusters.find(cluster => {
+        return cluster.shardsStats.some(shard => shard.id.toString() === searched);
+    });
+
+    if (result) {
+        // Assuming shardID is a property of the shard object inside the result
+        const shardID = result.shardsStats.find(shard => shard.id.toString() === searched)?.id;
+        setSearchResult({ ...result, shardID: shardID });
+    } else {
+        setSearchResult(null);
+    }
+};
     
   const formatUptime = (totalMilliseconds) => {
     const totalSeconds = Math.floor(totalMilliseconds / 1000);
@@ -80,7 +97,7 @@ const Status = () => {
             <p>Counter Updates: <span className="font-semibold">{data.totalCounterUpdates}</span></p>
             <p>Unavailable Servers: <span className="font-semibold">{data.totalUnavailableGuilds}</span></p>
           </div>
-            <div className="flex md:w-96 w-auto text-white mb-6">
+            <form className="flex md:w-96 w-auto text-white mb-6" onSubmit={handleSearch}>
                 <Input 
                     color="light-blue" 
                     className='text-white rounded-none rounded-l-lg' 
@@ -88,9 +105,17 @@ const Status = () => {
                     label="Search for a server by ID"
                     value={searchTerm}
                     onChange={handleSearchChange}
+                    
                 />
-                <Button className="bg-blue-500 text-white px-4 rounded-none rounded-r-lg"><FaSearch size="16"/></Button>
-            </div>
+                <Button onClick={handleSearch} className="bg-blue-500 text-white px-4 rounded-none rounded-r-lg"><FaSearch size="16"/></Button>
+            </form>
+            {searchResult && (
+                <div className="mb-4">
+                    <p className="text-lg text-white">
+                    * Located in cluster {searchResult.cluster + 1} and shard {searchResult.shardID} *
+                    </p>
+                </div>
+            )}
           <div className="flex items-center flex-wrap mb-6">
             <div className="flex items-center p-2">
               <span className="w-4 h-4 bg-green-400 rounded-full inline-block mr-2"></span>
