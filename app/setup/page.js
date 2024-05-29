@@ -37,7 +37,7 @@ const Setup = () => {
                 The first thing you have to do is add the bot to your server, use the button under this text to add the bot (You need to be login with Discord on your browser). If your on a phone that it's better to open the invite link in your browser and you don't have to change the permissions (it's already set to the bare minimum).
                 </p>
                 <Link href="https://discord.com/oauth2/authorize?client_id=458276816071950337&permissions=1100824&response_type=code&redirect_uri=https%3A%2F%2Fserverstatsbot.com%2Finvite&scope=bot" target="_blank" >
-                  <Button className="text-center w-full border border-[#22a7f0] py-2 rounded-md focus:bg-[#22a8f021] hover:bg-[#22a8f021] hover:text-[#22a7f0] text-[#22a7f0] transition duration-300 ease-in-out">
+                  <Button className="text-center text-lg font-bold tracking-wider w-full border border-[#22a7f0] py-2 rounded-md focus:bg-[#22a8f021] hover:bg-[#22a8f021] hover:text-[#22a7f0] text-[#22a7f0] transition duration-300 ease-in-out">
                     INVITE THE BOT
                   </Button>
                 </Link>
@@ -103,7 +103,7 @@ const Setup = () => {
           </section>
         </div>
         <Link href="https://discord.com/invite/vE8qKNV" target="_blank" className='pt-24 pb-10' >
-          <Button className="text-center text-lg w-full border border-[#22a7f0] py-2 rounded-md focus:bg-[#22a8f021] hover:bg-[#22a8f021] hover:text-[#22a7f0] text-[#22a7f0] transition duration-300 ease-in-out">
+          <Button className="text-center font-bold tracking-wider text-lg w-full border border-[#22a7f0] py-2 rounded-md focus:bg-[#22a8f021] hover:bg-[#22a8f021] hover:text-[#22a7f0] text-[#22a7f0] transition duration-300 ease-in-out">
             STILL NEED MORE HELP? CLICK HERE
           </Button>
         </Link>

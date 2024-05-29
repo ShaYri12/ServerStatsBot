@@ -21,16 +21,16 @@ export default function Home() {
             <img class="object-cover object-center rounded" alt="hero" src="/assets/hero-img.svg"/>
           </div>
           <div class="w-fit lg:pl-22 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-bold text-white">ServerStats</h1>
+            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-extrabold text-white">ServerStats</h1>
             <p class="mb-8 text-white">Welcome to the website of ServerStats bot!.</p>
             <div class="flex justify-center space-x-4">
             <Link href="https://www.patreon.com/serverstats" target="_blank" >
-              <Button className="text-center w-full bg-[#22a7f0] py-2 rounded-md focus:bg-[#44bbfc] hover:bg-[#44bbfc] text-white transition duration-300 ease-in-out">
+              <Button className="text-center text-lg font-bold tracking-wider w-full bg-[#22a7f0] py-2 rounded-md focus:bg-[#44bbfc] hover:bg-[#44bbfc] text-white transition duration-300 ease-in-out">
                 INVITE BOT
               </Button>
             </Link>
             <Link href="https://discord.com/invite/vE8qKNV" target="_blank" >
-              <Button className="text-center w-full border border-[#22a7f0] py-2 rounded-md focus:bg-[#22a8f021] hover:bg-[#22a8f021] hover:text-[#22a7f0] text-[#22a7f0] transition duration-300 ease-in-out">
+              <Button className="text-center w-full text-lg tracking-wider font-bold border border-[#22a7f0] py-2 rounded-md focus:bg-[#22a8f021] hover:bg-[#22a8f021] hover:text-[#22a7f0] text-[#22a7f0] transition duration-300 ease-in-out">
                 GET SUPPORT
               </Button>
             </Link>
