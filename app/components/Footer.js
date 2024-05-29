@@ -30,10 +30,10 @@ const Footer = () => {
           </div>
           <div className="md:w-1/3 w-auto flex flex-col space-y-4 text-center">
             <span className="text-lg font-semibold">Information</span>
-            <Link className="hover:text-blue-500 underline text-[#22a7f0] transition duration-300 ease-in-out" href="#">
+            <Link className="hover:text-blue-500 underline text-[#22a7f0] transition duration-300 ease-in-out" href="/privacy-statement">
               Privacy statement
             </Link>
-            <Link className="hover:text-blue-500 underline text-[#22a7f0] transition duration-300 ease-in-out" href="#">
+            <Link className="hover:text-blue-500 underline text-[#22a7f0] transition duration-300 ease-in-out" href="/terms-of-use">
               Terms of use
             </Link>
           </div>
