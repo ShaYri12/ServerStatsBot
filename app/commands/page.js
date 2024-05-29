@@ -1,43 +1,72 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { Select, Option, Input } from "@material-tailwind/react";
 
-
-
 const Commands = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filter, setFilter] = useState("All");
+
   useEffect(() => {
     window.scrollTo(0, -1);
   }, []);
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleFilterChange = (value) => {
+    setFilter(value);
+  };
+
+  const filteredCommands = commandsData.filter((command) => {
+    const matchesSearch = command.command.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesFilter = filter === "All" || command.category === filter.toLowerCase();
+    return matchesSearch && matchesFilter;
+  });
 
   return (
     <section className='container mx-auto py-20 text-white px-10'>
       <h1 className='font-extrabold text-center text-4xl py-10'>Commands</h1>
       <div className='px-1 flex flex-col md:flex-row justify-between py-5 items-center space-y-4 md:space-y-0 md:space-x-2'>
         <div className="w-72 text-white">
-          <Input color="light-blue" className='text-white' variant="outlined" label="Search"/>
+          <Input 
+            color="light-blue" 
+            className='text-white' 
+            variant="outlined" 
+            label="Search"
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
         </div>
         <div className="w-72">
-          <Select className='text-white' color="light-blue" variant="outlined" label="Filter">
-            <Option>All</Option>
-            <Option>General</Option>
-            <Option>Admin</Option>
-            <Option>Info</Option>
+          <Select 
+            className='text-white' 
+            color="light-blue" 
+            variant="outlined" 
+            label="Filter"
+            value={filter}
+            onChange={handleFilterChange}
+          >
+            <Option value="All">All</Option>
+            <Option value="General">General</Option>
+            <Option value="Admin">Admin</Option>
+            <Option value="Info">Info</Option>
           </Select>
         </div>
       </div>
       <div className='space-y-2 flex flex-col w-full'>
-        {commandsData.map((command,index)=>(
-        <div key={index.id} className='text-md flex items-center md:flex-row flex-col text-center justify-between bg-[#22313f] hover:bg-[#384f64] rounded-lg py-3 px-4 md:space-x-4 space-x-0 space-y-2 transition duration-300 ease-in-out'>
-          <h3 className='font-bold text-lg'>{command.command}</h3>
-          <p className='text-gray-300'>{command.description}</p>
-        </div>
-      ))}
+        {filteredCommands.map((command) => (
+          <div key={command.id} className='text-md flex items-center md:flex-row flex-col text-center justify-between bg-[#22313f] hover:bg-[#384f64] rounded-lg py-3 px-4 md:space-x-4 space-x-0 space-y-2 transition duration-300 ease-in-out'>
+            <h3 className='font-bold text-lg'>{command.command}</h3>
+            <p className='text-gray-300'>{command.description}</p>
+          </div>
+        ))}
       </div>
     </section>
   )
 }
 
-export default Commands
+export default Commands;
 
 const commandsData = [
   {
@@ -221,4 +250,3 @@ const commandsData = [
     "category": "admin"
   }
 ];
-
