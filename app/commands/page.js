@@ -19,8 +19,14 @@ const Commands = () => {
   };
 
   const filteredCommands = commandsData.filter((command) => {
-    const matchesSearch = command.command.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesFilter = filter === "All" || command.category === filter.toLowerCase();
+    const lowerSearchTerm = searchTerm.toLowerCase();
+    const matchesSearch = 
+      command.command.toLowerCase().includes(lowerSearchTerm) ||
+      command.description.toLowerCase().includes(lowerSearchTerm) ||
+      command.category.toLowerCase().includes(lowerSearchTerm);
+
+    const matchesFilter = filter === "All" || command.category.toLowerCase() === filter.toLowerCase();
+
     return matchesSearch && matchesFilter;
   });
 
@@ -45,7 +51,7 @@ const Commands = () => {
             variant="outlined" 
             label="Filter"
             value={filter}
-            onChange={handleFilterChange}
+            onChange={(e) => handleFilterChange(e.target.value)}
           >
             <Option value="All">All</Option>
             <Option value="General">General</Option>
