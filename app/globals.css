@@ -13,3 +13,28 @@
 body {
   font-family: 'Poppins', sans-serif;
 }
+
+::-webkit-scrollbar {
+  width: 12px; /* Width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #263042; /* Color of the track */
+  border-radius: 10px; /* Rounded corners of the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4A5568; /* Color of the scroll thumb */
+  border-radius: 10px; /* Rounded corners of the thumb */
+  border: 3px solid #263042; /* Padding around the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2D3748; /* Color of the thumb on hover */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin; /* Thin scrollbar */
+  scrollbar-color: #4A5568 #263042; /* Scrollbar thumb and track colors */
+}

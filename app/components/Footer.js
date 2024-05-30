@@ -40,7 +40,7 @@ const Footer = () => {
               <span className="text-lg font-semibold">ServerStats Premium</span>
               <p className="text-sm">Get more out of ServerStats. Get the premium by donating.</p>
               <Link href="https://www.patreon.com/serverstats" target="_blank">
-                <Button className="text-center text-md font-bold w-full bg-[#22a7f0] py-2 rounded-lg focus:bg-[#44bbfc] hover:bg-[#44bbfc] text-white transition duration-300 ease-in-out tracking-wider">
+                <Button className="text-center md:max-w-[300px] text-md font-bold w-full bg-[#22a7f0] py-2 rounded-lg focus:bg-[#44bbfc] hover:bg-[#44bbfc] text-white transition duration-300 ease-in-out tracking-wider">
                   Donate
                 </Button>
               </Link>
