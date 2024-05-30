@@ -46,18 +46,18 @@ const Commands = () => {
         </div>
         <div className="w-72">
           <Select 
-            className='text-white' 
-            color="light-blue" 
-            variant="outlined" 
-            label="Filter"
-            value={filter}
-            onChange={(e) => handleFilterChange(e.target.value)}
-          >
-            <Option value="All">All</Option>
-            <Option value="General">General</Option>
-            <Option value="Admin">Admin</Option>
-            <Option value="Info">Info</Option>
-          </Select>
+          className='text-white' 
+          color="light-blue" 
+          variant="outlined" 
+          label="Filter"
+          value={filter}
+          onChange={(value) => handleFilterChange(value)}
+        >
+          <Option value="All">All</Option>
+          <Option value="General">General</Option>
+          <Option value="Admin">Admin</Option>
+          <Option value="Info">Info</Option>
+        </Select>
         </div>
       </div>
       <div className='space-y-2 flex flex-col w-full'>

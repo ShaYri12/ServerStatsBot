@@ -101,6 +101,7 @@ const Status = () => {
                 <Input 
                     color="light-blue" 
                     className='text-white rounded-none rounded-l-lg' 
+                    type="number"
                     variant="outlined" 
                     label="Search for a server by ID"
                     value={searchTerm}
